@@ -1,0 +1,40 @@
+
+# ================== Python virtual environment ==================
+venv/
+env/
+.env
+
+# ================== DLL and binaries ==================
+*.dll
+*.lib
+*.exe
+*.pdb
+*.pyd
+
+# ================== Python cache ==================
+__pycache__/
+*.pyc
+
+# ================== Build folders ==================
+build/
+dist/
+
+# ================== Project-specific ignores ==================
+webapp/upload.py
+webapp/utils.py
+webapp/apps.py
+
+delete.py
+
+# ================== Other folders ==================
+htrack/
+
+# ================== Django ==================
+*.log
+db.sqlite3
+ 
+staticfiles/
+
+# ================== OS files ==================
+.DS_Store
+Thumbs.db
