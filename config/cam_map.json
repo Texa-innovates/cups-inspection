@@ -1,0 +1,22 @@
+{
+  "CAM1": {
+    "index": 0,
+    "device": "/dev/video0",
+    "usb_id": "usb-0000:00:14.0-2"
+  },
+  "CAM2": {
+    "index": 2,
+    "device": "/dev/video2",
+    "usb_id": "usb-0000:00:14.0-1"
+  },
+  "CAM3": {
+    "index": 4,
+    "device": "/dev/video4",
+    "usb_id": "usb-0000:00:14.0-3"
+  },
+  "CAM4": {
+    "index": 6,
+    "device": "/dev/video6",
+    "usb_id": "usb-0000:00:14.0-4"
+  }
+}

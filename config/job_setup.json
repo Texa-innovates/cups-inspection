@@ -1,0 +1,18 @@
+{
+  "job_id": {
+    "value": "2",
+    "locked": true
+  },
+  "threshold": {
+    "value": 50,
+    "locked": true
+  },
+  "threshold_path": {
+    "value": "/home/texa_innovates/chromo_gpu/oneclass_heritage_new.joblib",
+    "locked": true
+  },
+  "cup_count": {
+    "value": 6,
+    "updated_at": "2026-05-07 10:18:46"
+  }
+}
