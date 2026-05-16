@@ -2,10 +2,11 @@ import sqlite3
 from PyQt5.QtCore import Qt, QTime
 from PyQt5.QtWidgets import QDialog, QVBoxLayout, QGridLayout, QLabel, QTimeEdit, QPushButton, QMessageBox
 from datetime import datetime
+from path import DB_PATH
 
 def create_database_and_tables():
     
-    conn = sqlite3.connect("production.db")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
     # ---------------- TABLE 1 : jobid_table ----------------
@@ -161,7 +162,7 @@ def set_active_jobid(conn, active_jobid_name: str):
     
 
 def insert_defect(cup_count: int, camara_angle: str, img_path: str, defect_type: str = "BAD") -> None:
-    conn = sqlite3.connect("production.db")
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("""
         INSERT INTO defect_table (count, camara_angle, img_path, defect_type)
@@ -182,7 +183,7 @@ def _parse_time(tstr: str):
 def get_current_shift_id() -> int:
     now_t = datetime.now().time()
 
-    conn = sqlite3.connect("production.db")
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("SELECT id, shift_start_time, shift_end_time FROM shift_table")
     rows = cur.fetchall()
@@ -206,7 +207,7 @@ def get_current_shift_id() -> int:
     return 0
 
 def get_total_shift_count() -> int:
-    conn = sqlite3.connect("production.db")
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("SELECT COUNT(*) FROM shift_table")
     n = cur.fetchone()[0]
@@ -214,7 +215,7 @@ def get_total_shift_count() -> int:
     return int(n)
 
 def get_active_job_pk_id() -> int:
-    conn = sqlite3.connect("production.db")
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
     cur.execute("""
         SELECT id
@@ -233,7 +234,7 @@ def upsert_cup_entry(cup_count):
     job_id = get_active_job_pk_id()
     created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    conn = sqlite3.connect("production.db")
+    conn = sqlite3.connect(DB_PATH)
     cur = conn.cursor()
 
     # Find last row for same context (job_id + shift_id + shift_count)

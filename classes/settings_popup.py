@@ -7,14 +7,16 @@ from PyQt5.QtWidgets import (
     QWidget, QStackedWidget, QLineEdit, QListWidget, QMessageBox, QTableWidget, QTableWidgetItem,
     QFileDialog
 )
+from path import JOBID_JSON_FILE,MODEL_PATH
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt, QTime
 from PyQt5.QtGui import QIntValidator
 from classes.database import (fetch_shifts, delete_shift_by_id, insert_shift,
                       get_saved_machine,save_machine,delete_machine,insert_jobid,fetch_jobids,set_active_jobid  )
 import os
+from path import DB_PATH
 
-JOB_SETUP_JSON_FILE = os.path.join("config", "job_setup.json")
+JOB_SETUP_JSON_FILE = JOBID_JSON_FILE
 
 import json
 
@@ -430,7 +432,7 @@ class SettingsPopup(QDialog):
         self.setWindowTitle("Settings")
         self.setFixedSize(680, 440)
         self.setModal(False)
-        self.conn = sqlite3.connect("production.db")
+        self.conn = sqlite3.connect(DB_PATH)
         # ensure_shift_table(self.conn)
 
 
@@ -599,7 +601,7 @@ class SettingsPopup(QDialog):
 
     def _job_setup_browse_threshold_file(self):
         """Open file dialog and show selected path near the button."""
-        path, _ = QFileDialog.getOpenFileName(self, "Select Threshold File", "", "All Files (*.*)")
+        path, _ = QFileDialog.getOpenFileName(self, "Select Threshold File", MODEL_PATH, "Joblib Files (*.joblib);;All Files (*.*)")
         if path:
             self._job_setup_selected_path = path
             self.lbl_browse_path.setText(path)

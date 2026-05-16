@@ -1,0 +1,14 @@
+{
+  "job_id": {
+    "value": "2",
+    "locked": true
+  },
+  "threshold": {
+    "value": 70,
+    "locked": true
+  },
+  "threshold_path": {
+    "value": "D:/cups-inspection/Cup_Data/model/oneclass_heritage_new.joblib",
+    "locked": true
+  }
+}
